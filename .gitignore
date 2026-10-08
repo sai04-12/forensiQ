@@ -1,0 +1,32 @@
+# Rust build artifacts
+target/
+backend/target/
+**/*.rs.bk
+Cargo.lock
+
+# Test & Evidence directories
+carved_output/
+evidence_intake/
+*.raw
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+backend/*.sqlite
+backend/*.sqlite*
+backend/*.raw
+
+# Flutter / Dart
+frontend/.dart_tool/
+frontend/.flutter-plugins
+frontend/.flutter-plugins-dependencies
+frontend/.packages
+frontend/.pub-cache/
+frontend/.pub/
+frontend/build/
+
+# IDE & OS
+.vscode/
+.idea/
+*.swp
+*.DS_Store
+Thumbs.db
