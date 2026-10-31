@@ -3,3 +3,4 @@ services:
     name: forensiq-toolkit
     env: static
     staticPublishPath: ./static
+

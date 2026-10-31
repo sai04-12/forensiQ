@@ -2,7 +2,6 @@
 target/
 backend/target/
 **/*.rs.bk
-Cargo.lock
 
 # Test & Evidence directories
 carved_output/
