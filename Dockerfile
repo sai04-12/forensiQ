@@ -55,3 +55,4 @@ ENV CARVED_OUTPUT_DIR=/app/carved_output
 EXPOSE 3000
 
 CMD ["/app/forensiq-backend"]
+

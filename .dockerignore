@@ -6,3 +6,4 @@ frontend/
 .vscode/
 carved_output/
 *.sqlite*
+

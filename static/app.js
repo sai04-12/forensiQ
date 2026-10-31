@@ -366,3 +366,4 @@ in strict adherence to ISO/IEC 27037 standards for digital forensic integrity.
 document.addEventListener('DOMContentLoaded', () => {
   initLiveConsole();
 });
+
