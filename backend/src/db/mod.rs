@@ -33,7 +33,13 @@ impl AppState {
             .unwrap_or_else(|_| "postgres://postgres:postgres@localhost:5432/forensiq".to_string());
 
         let evidence_root = env::var("FORENSIQ_EVIDENCE_ROOT")
-            .unwrap_or_else(|_| "c:\\forensiQ\\evidence_vault".to_string());
+            .unwrap_or_else(|_| {
+                if std::path::Path::new("c:\\forensiQ\\evidence_vault").exists() {
+                    "c:\\forensiQ\\evidence_vault".to_string()
+                } else {
+                    "./evidence_vault".to_string()
+                }
+            });
 
         // Ensure evidence root intake directory exists
         let _ = std::fs::create_dir_all(&evidence_root);

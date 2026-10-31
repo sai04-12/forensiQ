@@ -592,7 +592,16 @@ pub async fn carve_files(
     let validated_path = validate_evidence_path(&state, &ev_item.file_path)?;
     let path_str = validated_path.to_string_lossy().to_string();
 
-    let carved_root_dir = "c:\\forensiQ\\carved_output";
+    let carved_root_dir_str = std::env::var("CARVED_OUTPUT_DIR").unwrap_or_else(|_| {
+        if std::path::Path::new("carved_output").exists() {
+            "carved_output".to_string()
+        } else if std::path::Path::new("c:\\forensiQ\\carved_output").exists() {
+            "c:\\forensiQ\\carved_output".to_string()
+        } else {
+            "./carved_output".to_string()
+        }
+    });
+    let carved_root_dir = carved_root_dir_str.as_str();
 
     // 5. Execute Real Binary File Carving Engine
     let carve_res = forensics::carving::carve_evidence_file(
@@ -675,9 +684,18 @@ pub async fn download_carved_file(
             format!("Invalid carved asset path: {}", e),
         )
     })?;
-    let carved_root = StdPath::new("c:\\forensiQ\\carved_output");
+    let default_carved_root = std::env::var("CARVED_OUTPUT_DIR").unwrap_or_else(|_| {
+        if std::path::Path::new("carved_output").exists() {
+            "carved_output".to_string()
+        } else if std::path::Path::new("c:\\forensiQ\\carved_output").exists() {
+            "c:\\forensiQ\\carved_output".to_string()
+        } else {
+            "./carved_output".to_string()
+        }
+    });
+    let carved_root = StdPath::new(&default_carved_root);
     let canonical_root = std::fs::canonicalize(carved_root)
-        .unwrap_or_else(|_| PathBuf::from("c:\\forensiQ\\carved_output"));
+        .unwrap_or_else(|_| PathBuf::from(&default_carved_root));
 
     let is_under_carved_root = canonical_file.starts_with(&canonical_root)
         || canonical_file

@@ -83,7 +83,26 @@ async fn main() {
         .layer(cors)
         .with_state(state);
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+    let static_dir_path = if std::path::Path::new("static").exists() {
+        "static"
+    } else if std::path::Path::new("backend/static").exists() {
+        "backend/static"
+    } else if std::path::Path::new("../static").exists() {
+        "../static"
+    } else {
+        "static"
+    };
+
+    let static_service = tower_http::services::ServeDir::new(static_dir_path)
+        .fallback(tower_http::services::ServeFile::new(format!("{}/index.html", static_dir_path)));
+
+    let app = app.fallback_service(static_service);
+
+    let port: u16 = std::env::var("PORT")
+        .ok()
+        .and_then(|p| p.parse().ok())
+        .unwrap_or(3000);
+    let addr = SocketAddr::from(([0, 0, 0, 0], port));
     println!("╔══════════════════════════════════════════════════════════╗");
     println!("║       ForensiQ Digital Forensic Toolkit Backend          ║");
     println!("║       Axum REST Server listening on http://{}   ║", addr);

@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ForensiQ — Digital Forensic Investigation Toolkit</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%230b1322' stroke='%2300d2ff' stroke-width='6'/><path d='M35 50 A15 15 0 0 1 65 50 A10 10 0 0 0 45 50' fill='none' stroke='%2300d2ff' stroke-width='4' stroke-linecap='round'/><circle cx='50' cy='50' r='5' fill='%2300d2ff'/><line x1='60' y1='60' x2='80' y2='80' stroke='%2300d2ff' stroke-width='6' stroke-linecap='round'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===================================================================
+       TOP NAVIGATION BAR
+  =================================================================== -->
+  <header class="top-nav">
+    <div class="brand-wrapper" onclick="showSlide('slide-1')">
+      <!-- High-Tech ForensiQ Emblem -->
+      <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="45" stroke="#00d2ff" stroke-width="4" stroke-dasharray="8 4" opacity="0.6"/>
+        <path d="M30 46 C30 35, 40 26, 52 26 C64 26, 72 34, 72 45 C72 58, 62 65, 50 67" stroke="#00d2ff" stroke-width="4" stroke-linecap="round"/>
+        <path d="M38 52 C38 43, 44 36, 52 36 C60 36, 65 42, 65 50 C65 60, 58 64, 52 64" stroke="#1f6feb" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="52" cy="50" r="4" fill="#00e676"/>
+        <circle cx="68" cy="68" r="14" stroke="#00d2ff" stroke-width="4" fill="#0b1322"/>
+        <line x1="78" y1="78" x2="90" y2="90" stroke="#00d2ff" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <div class="brand-text-col">
+        <span class="brand-title">ForensiQ</span>
+        <span class="brand-subtitle">Digital Forensic Investigation Toolkit</span>
+      </div>
+    </div>
+
+    <!-- PPT Presentation Nav Tabs -->
+    <nav class="nav-tabs">
+      <button class="nav-tab-btn active" onclick="showSlide('slide-1')">
+        <span>1. Introduction</span>
+      </button>
+      <button class="nav-tab-btn" onclick="showSlide('slide-2')">
+        <span>2. Overview & Usage</span>
+      </button>
+      <button class="nav-tab-btn" onclick="showSlide('slide-3')">
+        <span>3. Methodology</span>
+      </button>
+      <button class="nav-tab-btn" onclick="showSlide('slide-4')">
+        <span>4. Implementation</span>
+      </button>
+      <button class="nav-tab-btn" onclick="showSlide('slide-5')">
+        <span>5. Tech Stack</span>
+      </button>
+      <button class="nav-tab-btn" onclick="showSlide('slide-6')">
+        <span>6. Team & Features</span>
+      </button>
+      <button class="nav-tab-btn" onclick="showSlide('slide-live')">
+        <span>⚡ Live Workbench</span>
+      </button>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="nav-actions">
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span id="backend-status-text">Toolkit Engine: Active</span>
+      </div>
+      <button class="btn-launch-app" onclick="showSlide('slide-live')">
+        <span>Launch Console</span>
+        <span>→</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       MAIN PRESENTATION VIEWPORT
+  =================================================================== -->
+  <main class="presentation-viewport">
+
+    <!-- =================================================================
+         SLIDE 1: INTRODUCTION
+    ================================================================== -->
+    <section id="slide-1" class="slide-section active-slide">
+      <div class="slide-header">
+        <div class="slide-header-left">
+          <div class="slide-number-title">
+            <span class="slide-number-badge">1.</span>
+            <h1 class="slide-main-title">INTRODUCTION</h1>
+          </div>
+          <h2 class="slide-sub-headline">Digital Forensic Investigation Toolkit — ForensiQ</h2>
+          <p class="slide-description">
+            An integrated tool for automated evidence acquisition, multi-source analysis, artifact correlation and court-ready reporting.
+          </p>
+        </div>
+        <div class="slide-tag-pill">
+          ACQUIRE • ANALYZE • CORRELATE • REPORT
+        </div>
+      </div>
+
+      <div class="intro-grid">
+        <!-- Left Hero Identity Card -->
+        <div class="intro-hero-card">
+          <svg class="hero-fingerprint-emblem" viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="44" stroke="#00d2ff" stroke-width="3" stroke-dasharray="6 3"/>
+            <path d="M26 50 C26 34, 38 22, 52 22 C66 22, 76 33, 76 48 C76 62, 64 72, 50 74" stroke="#00d2ff" stroke-width="4" stroke-linecap="round"/>
+            <path d="M35 52 C35 40, 42 32, 52 32 C62 32, 67 39, 67 49 C67 59, 60 65, 52 65" stroke="#1f6feb" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="52" cy="50" r="4.5" fill="#00e676"/>
+            <circle cx="68" cy="68" r="14" stroke="#00d2ff" stroke-width="3.5" fill="#070e1b"/>
+            <line x1="78" y1="78" x2="90" y2="90" stroke="#00d2ff" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <div class="hero-brand-title">ForensiQ</div>
+          <div class="hero-brand-subtitle">Digital Forensic Investigation Toolkit</div>
+
+          <div class="hero-actions-list">
+            <div class="hero-action-item">
+              <span>⚡</span>
+              <span>ACQUIRE</span>
+            </div>
+            <div class="hero-action-item">
+              <span>📊</span>
+              <span>ANALYZE</span>
+            </div>
+            <div class="hero-action-item">
+              <span>🔗</span>
+              <span>CORRELATE</span>
+            </div>
+            <div class="hero-action-item">
+              <span>📋</span>
+              <span>REPORT</span>
+            </div>
+          </div>
+
+          <div class="hero-banner-footer">
+            <div class="hero-banner-tag">From Evidence <span>to Answers</span></div>
+          </div>
+        </div>
+
+        <!-- Right Content & Pillars -->
+        <div class="intro-content-col">
+          <div class="content-box">
+            <h3 class="section-label">What is <span>ForensiQ?</span></h3>
+            <p class="content-body-p">
+              ForensiQ is a digital forensic toolkit that helps investigators collect, analyze and correlate digital evidence from disk, memory and network sources. It provides an easy-to-use interface to perform forensic analysis and generate structured, court-ready reports.
+            </p>
+
+            <div class="feature-cards-grid">
+              <div class="feature-card">
+                <div class="feature-icon-bubble bubble-blue">⚡</div>
+                <div class="feature-info">
+                  <h4>Automates complex tasks</h4>
+                  <p>Reduces manual effort and errors through intelligent automated intake.</p>
+                </div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon-bubble bubble-green">🛡️</div>
+                <div class="feature-info">
+                  <h4>Maintains evidence integrity</h4>
+                  <p>Cryptographic SHA-256 / SHA-1 verification & auditable chain-of-custody logs.</p>
+                </div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon-bubble bubble-red">🗄️</div>
+                <div class="feature-info">
+                  <h4>Unified analysis</h4>
+                  <p>Disk, memory and network artifacts correlated across one single platform.</p>
+                </div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon-bubble bubble-purple">📄</div>
+                <div class="feature-info">
+                  <h4>Generates legal reports</h4>
+                  <p>Structured, court-ready tamper-evident PDF reports with immutability stamps.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5-Step Workflow Section -->
+      <div class="workflow-section-box">
+        <h3 class="section-label">How to Use <span>ForensiQ?</span></h3>
+        <div class="steps-ribbon">
+          <div class="step-card">
+            <div class="step-header-row">
+              <span class="step-num-badge badge-step-1">1</span>
+              <span class="step-card-icon">📁</span>
+            </div>
+            <h4 class="step-card-title">Create a Case</h4>
+            <p class="step-card-desc">Enter case details and select evidence type (disk / memory / network).</p>
+            <div class="step-card-arrow">→</div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-header-row">
+              <span class="step-num-badge badge-step-2">2</span>
+              <span class="step-card-icon">⚙️</span>
+            </div>
+            <h4 class="step-card-title">Acquire Evidence</h4>
+            <p class="step-card-desc">Collect data through write-blocked mode and verify hash (SHA-256 / SHA-1).</p>
+            <div class="step-card-arrow">→</div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-header-row">
+              <span class="step-num-badge badge-step-3">3</span>
+              <span class="step-card-icon">🔍</span>
+            </div>
+            <h4 class="step-card-title">Run Analysis</h4>
+            <p class="step-card-desc">Parse files, analyze memory dumps, inspect network captures and recover artifacts.</p>
+            <div class="step-card-arrow">→</div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-header-row">
+              <span class="step-num-badge badge-step-4">4</span>
+              <span class="step-card-icon">📊</span>
+            </div>
+            <h4 class="step-card-title">View Results</h4>
+            <p class="step-card-desc">See timelines, artifacts, IOC matches and detailed analysis results in the dashboard.</p>
+            <div class="step-card-arrow">→</div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-header-row">
+              <span class="step-num-badge badge-step-5">5</span>
+              <span class="step-card-icon">📑</span>
+            </div>
+            <h4 class="step-card-title">Generate Report</h4>
+            <p class="step-card-desc">Create a structured, court-ready PDF report with evidence details and chain-of-custody records.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =================================================================
+         SLIDE 2: PROJECT OVERVIEW & USAGE (DEVICE SCREEN SIMULATOR)
+    ================================================================== -->
+    <section id="slide-2" class="slide-section">
+      <div class="slide-header">
+        <div class="slide-header-left">
+          <div class="slide-number-title">
+            <span class="slide-number-badge">2.</span>
+            <h1 class="slide-main-title">PROJECT OVERVIEW & USAGE</h1>
+          </div>
+          <p class="slide-description">
+            ForensiQ is a unified digital forensic toolkit that automates evidence acquisition, multi-source analysis, artifact correlation, and generation of court-ready reports.
+          </p>
+        </div>
+        <div class="slide-tag-pill">
+          FASTER INVESTIGATIONS • STRONGER EVIDENCE • COURT-READY REPORTS
+        </div>
+      </div>
+
+      <!-- Top 3 Summary Columns -->
+      <div class="overview-top-3col">
+        <div class="card-top-summary">
+          <h3>
+            <span style="color:#00d2ff;">🔍</span>
+            What is ForensiQ?
+          </h3>
+          <p>
+            ForensiQ is an integrated digital forensic investigation platform that helps investigators acquire, analyze and correlate evidence from disk, memory and network sources through a simple, user-friendly interface.
+          </p>
+        </div>
+
+        <div class="card-top-summary">
+          <h3>
+            <span style="color:#00e676;">✔</span>
+            Key Features
+          </h3>
+          <ul class="checklist-items">
+            <li><span class="check-icon-green">✔</span> Write-blocked evidence acquisition with hash verification</li>
+            <li><span class="check-icon-green">✔</span> Tamper-evident chain-of-custody logging</li>
+            <li><span class="check-icon-green">✔</span> Unified disk, memory and network analysis</li>
+            <li><span class="check-icon-green">✔</span> Cross-source timeline reconstruction</li>
+            <li><span class="check-icon-green">✔</span> IOC & keyword correlation</li>
+            <li><span class="check-icon-green">✔</span> Structured, court-ready PDF report generation</li>
+          </ul>
+        </div>
+
+        <div class="card-top-summary">
+          <h3>
+            <span style="color:#a855f7;">👥</span>
+            Who Can Use?
+          </h3>
+          <ul class="checklist-items">
+            <li><span class="check-icon-purple">✔</span> Law enforcement investigators</li>
+            <li><span class="check-icon-purple">✔</span> Corporate security & incident response teams</li>
+            <li><span class="check-icon-purple">✔</span> Academic and research labs</li>
+            <li><span class="check-icon-purple">✔</span> Digital forensics trainees and professionals</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Centerpiece: Step-by-Step Workflow & Device Screens -->
+      <div class="workflow-interactive-box">
+        <div class="workflow-stepper-header">
+          <h3>How to Use ForensiQ? (Step-by-Step Workflow)</h3>
+          <div class="workflow-stepper-tabs">
+            <button class="sim-step-tab-btn active-sim-step" onclick="selectSimStep(1)">
+              <span class="sim-step-badge">1</span>
+              <span>Connect Device</span>
+            </button>
+            <button class="sim-step-tab-btn" onclick="selectSimStep(2)">
+              <span class="sim-step-badge">2</span>
+              <span>Device Overview</span>
+            </button>
+            <button class="sim-step-tab-btn" onclick="selectSimStep(3)">
+              <span class="sim-step-badge">3</span>
+              <span>Collect Evidence</span>
+            </button>
+            <button class="sim-step-tab-btn" onclick="selectSimStep(4)">
+              <span class="sim-step-badge">4</span>
+              <span>Analyze & Investigate</span>
+            </button>
+            <button class="sim-step-tab-btn" onclick="selectSimStep(5)">
+              <span class="sim-step-badge">5</span>
+              <span>Generate Report</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- The 5 Exact Screenshots from Slide 2 rendered as high-fidelity cards -->
+        <div class="sim-stage-container">
+
+          <!-- SCREEN 1: Connect Device -->
+          <div class="sim-device-card selected-card" id="sim-card-1" onclick="selectSimStep(1)">
+            <div class="sim-device-card-header">
+              <span class="sim-step-circle-mini" style="background:#00d2ff;">1</span>
+              <div>
+                <h4>Connect Device</h4>
+              </div>
+            </div>
+            <div class="sim-device-screen-preview">
+              <div class="mock-sidebar">
+                <div class="mock-logo-title">ForensiQ</div>
+                <div class="mock-nav-item mock-active">Dashboard</div>
+                <div class="mock-nav-item">Device</div>
+                <div class="mock-nav-item">Security</div>
+                <div class="mock-nav-item">Applications</div>
+                <div class="mock-nav-item">Permissions</div>
+                <div class="mock-nav-item">Processes</div>
+              </div>
+              <div class="mock-body">
+                <div class="screen-no-device-box">
+                  <div class="screen-usb-icon">🔌</div>
+                  <div class="screen-no-device-text">No device</div>
+                  <div class="screen-no-device-sub">USB not connected</div>
+                </div>
+              </div>
+            </div>
+            <div class="sim-device-caption">
+              Shows device connection status and guides you to connect the Android device via USB.
+            </div>
+          </div>
+
+          <!-- SCREEN 2: Device Overview -->
+          <div class="sim-device-card" id="sim-card-2" onclick="selectSimStep(2)">
+            <div class="sim-device-card-header">
+              <span class="sim-step-circle-mini" style="background:#00e676;">2</span>
+              <div>
+                <h4>Device Overview</h4>
+              </div>
+            </div>
+            <div class="sim-device-screen-preview">
+              <div class="mock-sidebar">
+                <div class="mock-logo-title">ForensiQ</div>
+                <div class="mock-nav-item">Dashboard</div>
+                <div class="mock-nav-item mock-active">Device</div>
+                <div class="mock-nav-item">Security</div>
+                <div class="mock-nav-item">Applications</div>
+                <div class="mock-nav-item">Permissions</div>
+                <div class="mock-nav-item">Processes</div>
+              </div>
+              <div class="mock-body">
+                <div class="mock-body-title">Device overview</div>
+                <div class="device-overview-card">
+                  <div class="device-title-row">
+                    <span class="device-phone-icon">📱</span>
+                    <div>
+                      <div class="device-name-text">Infinix X6815D</div>
+                      <div class="device-version-text">Android 13 • SDK 33 • Build NR4D</div>
+                    </div>
+                  </div>
+                  <div class="device-badges-grid">
+                    <div class="device-badge-row">
+                      <span>Security Patch:</span>
+                      <span style="color:#00d2ff; font-weight:700;">2024-05-05</span>
+                    </div>
+                    <div class="device-badge-row">
+                      <span>Verified Boot:</span>
+                      <span class="device-badge-green">green</span>
+                    </div>
+                    <div class="device-badge-row">
+                      <span>SELinux:</span>
+                      <span style="color:#00e676; font-weight:700;">Enforcing</span>
+                    </div>
+                    <div class="device-badge-row">
+                      <span>Bootloader:</span>
+                      <span style="color:#f59e0b; font-weight:700;">Locked</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sim-device-caption">
+              Shows device model, Android version, security patch, boot status, SELinux status and more.
+            </div>
+          </div>
+
+          <!-- SCREEN 3: Collect Evidence -->
+          <div class="sim-device-card" id="sim-card-3" onclick="selectSimStep(3)">
+            <div class="sim-device-card-header">
+              <span class="sim-step-circle-mini" style="background:#f59e0b;">3</span>
+              <div>
+                <h4>Collect Evidence</h4>
+              </div>
+            </div>
+            <div class="sim-device-screen-preview">
+              <div class="mock-sidebar">
+                <div class="mock-logo-title">ForensiQ</div>
+                <div class="mock-nav-item">Dashboard</div>
+                <div class="mock-nav-item">Device</div>
+                <div class="mock-nav-item">Security</div>
+                <div class="mock-nav-item">Applications</div>
+                <div class="mock-nav-item">Permissions</div>
+                <div class="mock-nav-item mock-active">Uninstall History</div>
+              </div>
+              <div class="mock-body">
+                <div class="mock-body-title">Uninstall History</div>
+                <div class="collect-box">
+                  <div class="collect-icon">📦</div>
+                  <div style="font-size:0.75rem; font-weight:700; color:#ffffff;">No data collected yet</div>
+                  <div style="font-size:0.62rem; color:#94a3b8; line-height:1.3;">Recover retained package records and high-confidence events.</div>
+                  <button class="collect-btn-mock" onclick="triggerMockCollect(event)">Collect from Android</button>
+                </div>
+              </div>
+            </div>
+            <div class="sim-device-caption">
+              Click "Collect from Android" to start acquiring application and system data.
+            </div>
+          </div>
+
+          <!-- SCREEN 4: Analyze & Investigate -->
+          <div class="sim-device-card" id="sim-card-4" onclick="selectSimStep(4)">
+            <div class="sim-device-card-header">
+              <span class="sim-step-circle-mini" style="background:#ec4899;">4</span>
+              <div>
+                <h4>Analyze & Investigate</h4>
+              </div>
+            </div>
+            <div class="sim-device-screen-preview">
+              <div class="mock-sidebar">
+                <div class="mock-logo-title">ForensiQ</div>
+                <div class="mock-nav-item">Dashboard</div>
+                <div class="mock-nav-item">Device</div>
+                <div class="mock-nav-item mock-active">Security</div>
+                <div class="mock-nav-item">Applications</div>
+                <div class="mock-nav-item">Permissions</div>
+                <div class="mock-nav-item">Processes</div>
+              </div>
+              <div class="mock-body">
+                <div class="mock-body-title">Security posture</div>
+                <div class="security-checklist">
+                  <div class="sec-check-row">
+                    <span>✔ Verified Boot</span>
+                    <span style="color:#00e676;">green</span>
+                  </div>
+                  <div class="sec-check-row">
+                    <span>✔ Bootloader</span>
+                    <span style="color:#00e676;">Locked</span>
+                  </div>
+                  <div class="sec-check-row">
+                    <span>✔ VBMeta</span>
+                    <span style="color:#00e676;">locked</span>
+                  </div>
+                  <div class="sec-check-row">
+                    <span>✔ SELinux</span>
+                    <span style="color:#00e676;">Enforcing</span>
+                  </div>
+                  <div class="sec-check-row">
+                    <span>✔ Production Build</span>
+                    <span style="color:#00e676;">Production</span>
+                  </div>
+                  <div class="sec-check-row">
+                    <span>✔ ADB Authentication</span>
+                    <span style="color:#f59e0b;">Required</span>
+                  </div>
+                  <div class="sec-check-row">
+                    <span>✔ Encryption</span>
+                    <span style="color:#00e676;">encrypted</span>
+                  </div>
+                  <div class="sec-check-row">
+                    <span>✔ Root Indicators</span>
+                    <span style="color:#00e676;">None found</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sim-device-caption">
+              View device security posture and analyze apps, permissions, processes, network activity and more.
+            </div>
+          </div>
+
+          <!-- SCREEN 5: Generate Report -->
+          <div class="sim-device-card" id="sim-card-5" onclick="selectSimStep(5)">
+            <div class="sim-device-card-header">
+              <span class="sim-step-circle-mini" style="background:#a855f7;">5</span>
+              <div>
+                <h4>Generate Report</h4>
+              </div>
+            </div>
+            <div class="sim-device-screen-preview">
+              <div class="mock-sidebar">
+                <div class="mock-logo-title">ForensiQ</div>
+                <div class="mock-nav-item">Dashboard</div>
+                <div class="mock-nav-item">Device</div>
+                <div class="mock-nav-item">Security</div>
+                <div class="mock-nav-item">Applications</div>
+                <div class="mock-nav-item">Processes</div>
+                <div class="mock-nav-item mock-active">Reports</div>
+              </div>
+              <div class="mock-body">
+                <div class="mock-body-title">Reports Configuration</div>
+                <div class="report-modules-mock">
+                  <div class="report-item-row">☑ Case Information</div>
+                  <div class="report-item-row">☑ Device Details</div>
+                  <div class="report-item-row">☑ Application Analysis</div>
+                  <div class="report-item-row">☑ Security Findings</div>
+                  <div class="report-item-row">☑ Timeline & Artifacts</div>
+                  <div class="report-item-row">☑ IOC Matches</div>
+                  <div class="report-item-row">☑ Chain of Custody</div>
+                  <div class="report-item-row">☑ Export PDF Report</div>
+                </div>
+                <button class="btn-report-mock" onclick="triggerMockReport(event)">Generate PDF Report</button>
+              </div>
+            </div>
+            <div class="sim-device-caption">
+              Compile analysis results into a structured PDF report with evidence details and chain-of-custody records.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =================================================================
+         SLIDE 3: SYSTEM METHODOLOGY
+    ================================================================== -->
+    <section id="slide-3" class="slide-section">
+      <div class="slide-header">
+        <div class="slide-header-left">
+          <div class="slide-number-title">
+            <span class="slide-number-badge">03</span>
+            <h1 class="slide-main-title">SYSTEM METHODOLOGY</h1>
+          </div>
+          <h2 class="slide-sub-headline">From Evidence Acquisition to Forensic Intelligence</h2>
+          <p class="slide-description">
+            A structured workflow that automates evidence acquisition, multi-source analysis, artifact correlation and generation of court-ready reports.
+          </p>
+        </div>
+        <div class="slide-tag-pill">
+          EVIDENCE • ANALYSIS • CORRELATION • INTELLIGENCE
+        </div>
+      </div>
+
+      <!-- 7 Methodology Cards -->
+      <div class="methodology-7grid">
+
+        <div class="method-card">
+          <div class="method-step-num num-m-1">1</div>
+          <h3 class="method-title">Evidence Acquisition</h3>
+          <ul class="method-bullets">
+            <li>Acquire disk, memory and network evidence.</li>
+            <li>Use write-blocked acquisition methods.</li>
+          </ul>
+          <div class="method-badges-wrap">
+            <span class="pill-badge pill-cyan">Disk Image</span>
+            <span class="pill-badge pill-cyan">Memory Dump</span>
+            <span class="pill-badge pill-cyan">Network Capture</span>
+          </div>
+        </div>
+
+        <div class="method-card">
+          <div class="method-step-num num-m-2">2</div>
+          <h3 class="method-title">Evidence Integrity Verification</h3>
+          <ul class="method-bullets">
+            <li>Calculate SHA-256 / SHA-1 hashes.</li>
+            <li>Verify evidence integrity.</li>
+          </ul>
+          <div class="method-badges-wrap">
+            <span class="pill-badge pill-green">=# SHA-256</span>
+            <span class="pill-badge pill-green">SHA-1</span>
+          </div>
+        </div>
+
+        <div class="method-card">
+          <div class="method-step-num num-m-3">3</div>
+          <h3 class="method-title">Chain-of-Custody Logging</h3>
+          <ul class="method-bullets">
+            <li>Record acquisition timestamps.</li>
+            <li>Maintain investigator and evidence handling records.</li>
+            <li>Preserve an auditable evidence trail.</li>
+          </ul>
+          <div class="method-badges-wrap">
+            <span class="pill-badge" style="background:rgba(245,158,11,0.2); color:#f59e0b;">Immutable Ledger</span>
+          </div>
+        </div>
+
+        <div class="method-card">
+          <div class="method-step-num num-m-4">4</div>
+          <h3 class="method-title">Artifact Extraction & Analysis</h3>
+          <ul class="method-bullets">
+            <li>Parse NTFS, EXT and FAT filesystems.</li>
+            <li>Recover deleted files using file carving.</li>
+            <li>Analyze memory dumps (Volatility-based pipeline).</li>
+            <li>Examine network PCAP captures.</li>
+          </ul>
+          <div class="method-badges-wrap">
+            <span class="pill-badge pill-purple">RAM</span>
+            <span class="pill-badge pill-purple">PCAP</span>
+          </div>
+        </div>
+
+        <div class="method-card">
+          <div class="method-step-num num-m-5">5</div>
+          <h3 class="method-title">Timeline Reconstruction</h3>
+          <ul class="method-bullets">
+            <li>Correlate filesystem, registry and log timestamps.</li>
+            <li>Build a unified investigative timeline.</li>
+          </ul>
+          <div class="method-badges-wrap">
+            <span class="pill-badge pill-pink">08:00</span>
+            <span class="pill-badge pill-pink">10:00</span>
+            <span class="pill-badge pill-pink">12:00</span>
+            <span class="pill-badge pill-pink">14:00</span>
+          </div>
+        </div>
+
+        <div class="method-card">
+          <div class="method-step-num num-m-6">6</div>
+          <h3 class="method-title">IOC & Artifact Correlation</h3>
+          <ul class="method-bullets">
+            <li>Search suspicious indicators and keywords.</li>
+            <li>Identify relationships between extracted artifacts.</li>
+          </ul>
+          <div class="method-badges-wrap">
+            <span class="pill-badge" style="background:rgba(20,184,166,0.2); color:#2dd4bf;">Threat Watchlists</span>
+          </div>
+        </div>
+
+        <div class="method-card">
+          <div class="method-step-num num-m-7">7</div>
+          <h3 class="method-title">Forensic Report Generation</h3>
+          <ul class="method-bullets">
+            <li>Generate structured PDF reports.</li>
+            <li>Include evidence details, analysis findings and chain-of-custody records.</li>
+          </ul>
+          <div class="method-badges-wrap">
+            <span class="pill-badge" style="background:rgba(31,111,235,0.2); color:#58a6ff;">Court-Ready PDF</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Investigation Workflow (End-to-End) Bar -->
+      <div class="pipeline-ribbon-bar">
+        <div class="ribbon-label">Investigation Workflow (End-to-End)</div>
+        <div class="ribbon-nodes">
+          <div class="ribbon-node">
+            <div class="ribbon-circle" style="background:#00d2ff; color:#060a12;">📱</div>
+            <div class="ribbon-node-text">
+              <h5>ACQUIRE</h5>
+              <p>Disk / Memory / Network</p>
+            </div>
+          </div>
+          <div class="ribbon-arrow">→</div>
+          <div class="ribbon-node">
+            <div class="ribbon-circle" style="background:#00e676; color:#060a12;">🛡️</div>
+            <div class="ribbon-node-text">
+              <h5>VERIFY</h5>
+              <p>Hash Verification</p>
+            </div>
+          </div>
+          <div class="ribbon-arrow">→</div>
+          <div class="ribbon-node">
+            <div class="ribbon-circle" style="background:#a855f7; color:#ffffff;">⚙️</div>
+            <div class="ribbon-node-text">
+              <h5>ANALYZE</h5>
+              <p>Artifacts & Evidence</p>
+            </div>
+          </div>
+          <div class="ribbon-arrow">→</div>
+          <div class="ribbon-node">
+            <div class="ribbon-circle" style="background:#ec4899; color:#ffffff;">📊</div>
+            <div class="ribbon-node-text">
+              <h5>CORRELATE</h5>
+              <p>Timeline & IOC Matching</p>
+            </div>
+          </div>
+          <div class="ribbon-arrow">→</div>
+          <div class="ribbon-node">
+            <div class="ribbon-circle" style="background:#1f6feb; color:#ffffff;">📑</div>
+            <div class="ribbon-node-text">
+              <h5>REPORT</h5>
+              <p>Court-Ready PDF</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =================================================================
+         SLIDE 4: IMPLEMENTATION & PROJECT OUTCOMES
+    ================================================================== -->
+    <section id="slide-4" class="slide-section">
+      <div class="slide-header">
+        <div class="slide-header-left">
+          <div class="slide-number-title">
+            <span class="slide-number-badge">04</span>
+            <h1 class="slide-main-title">IMPLEMENTATION & PROJECT OUTCOMES</h1>
+          </div>
+          <h2 class="slide-sub-headline">Turning Digital Evidence into Actionable Intelligence</h2>
+        </div>
+        <div class="slide-tag-pill">
+          EVIDENCE • ANALYSIS • CORRELATION • INTELLIGENCE
+        </div>
+      </div>
+
+      <!-- 4 Quadrants Grid -->
+      <div class="quadrant-grid">
+
+        <!-- Quadrant A -->
+        <div class="quadrant-card">
+          <div class="quadrant-header">
+            <div class="quadrant-letter-title">
+              <span class="quad-badge badge-a">A</span>
+              <h3>CORE IMPLEMENTATION</h3>
+            </div>
+            <span class="quad-tag">Multi-Source Forensic Analysis Engine</span>
+          </div>
+          <div class="quad-content-grid">
+            <div class="submodule-card">
+              <h4><span>💽</span> Disk Forensics</h4>
+              <ul>
+                <li>Filesystem parsing (NTFS / EXT / FAT)</li>
+                <li>Deleted-file recovery</li>
+                <li>File carving</li>
+                <li style="color:#00d2ff;">Disk Images</li>
+              </ul>
+            </div>
+            <div class="submodule-card">
+              <h4><span>🧠</span> Memory Forensics</h4>
+              <ul>
+                <li>RAM analysis</li>
+                <li>Process inspection</li>
+                <li>Network connections</li>
+                <li>Suspicious artifacts detection</li>
+                <li style="color:#a855f7;">Memory Dumps</li>
+              </ul>
+            </div>
+            <div class="submodule-card">
+              <h4><span>🌐</span> Network Forensics</h4>
+              <ul>
+                <li>PCAP parsing</li>
+                <li>Protocol analysis</li>
+                <li>Session reconstruction</li>
+                <li>Suspicious communication detection</li>
+                <li style="color:#00e676;">PCAP Captures</li>
+              </ul>
+            </div>
+            <div class="submodule-card">
+              <h4><span>⏱️</span> Timeline & Correlation</h4>
+              <ul>
+                <li>Cross-source event reconstruction</li>
+                <li>Correlate filesystem, registry and logs</li>
+                <li>IOC & keyword matching</li>
+                <li style="color:#f59e0b;">Unified Timeline</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quadrant B -->
+        <div class="quadrant-card">
+          <div class="quadrant-header">
+            <div class="quadrant-letter-title">
+              <span class="quad-badge badge-b">B</span>
+              <h3>SECURITY & EVIDENCE INTEGRITY</h3>
+            </div>
+            <span class="quad-tag">Trusted • Tamper-Evident • Secure</span>
+          </div>
+          <div class="quad-content-grid">
+            <div class="submodule-card">
+              <h4><span>🛡️</span> SHA-256 / SHA-1</h4>
+              <ul>
+                <li>Cryptographic hashing for evidence verification</li>
+                <li>Ensures data integrity across chain of custody</li>
+              </ul>
+            </div>
+            <div class="submodule-card">
+              <h4><span>📜</span> Chain-of-Custody Logging</h4>
+              <ul>
+                <li>Tamper-evident records</li>
+                <li>Acquisition timestamps</li>
+                <li>Auditable evidence trail</li>
+              </ul>
+            </div>
+            <div class="submodule-card">
+              <h4><span>🔑</span> JWT Authentication</h4>
+              <ul>
+                <li>Secure investigator login</li>
+                <li>Role-based access control (RBAC)</li>
+                <li>API authentication tokens</li>
+              </ul>
+            </div>
+            <div class="submodule-card">
+              <h4><span>☁️</span> S3-Compatible Storage</h4>
+              <ul>
+                <li>Secure evidence storage</li>
+                <li>Large file handling (disk images, PCAPs)</li>
+              </ul>
+            </div>
+          </div>
+          <div style="margin-top:0.85rem; padding:0.65rem 0.85rem; background:rgba(168,85,247,0.1); border:1px solid rgba(168,85,247,0.25); border-radius:6px; font-size:0.75rem; color:#d8b4fe;">
+            <strong>Evidence Traceability & Audit Records:</strong> Track every action performed on evidence with immutable logging.
+          </div>
+        </div>
+
+        <!-- Quadrant C -->
+        <div class="quadrant-card">
+          <div class="quadrant-header">
+            <div class="quadrant-letter-title">
+              <span class="quad-badge badge-c">C</span>
+              <h3>EXPECTED RESULTS</h3>
+            </div>
+            <span class="quad-tag">A More Efficient and Reliable Forensic Process</span>
+          </div>
+          <div class="quad-content-grid">
+            <div class="submodule-card">
+              <h4><span>⚡</span> Automated Evidence Acquisition</h4>
+              <p style="font-size:0.75rem; color:#94a3b8;">Reduces manual effort and errors through one-click ingestion.</p>
+            </div>
+            <div class="submodule-card">
+              <h4><span>🛡️</span> Reliable Evidence Integrity</h4>
+              <p style="font-size:0.75rem; color:#94a3b8;">Hash verification and chain-of-custody guarantee court admissibility.</p>
+            </div>
+            <div class="submodule-card">
+              <h4><span>🗄️</span> Unified Multi-Source Analysis</h4>
+              <p style="font-size:0.75rem; color:#94a3b8;">Disk, memory, and network artifacts in one platform.</p>
+            </div>
+            <div class="submodule-card">
+              <h4><span>⏱️</span> Faster Investigation Workflow</h4>
+              <p style="font-size:0.75rem; color:#94a3b8;">Automates repetitive tasks and correlates timeline anomalies.</p>
+            </div>
+            <div class="submodule-card">
+              <h4><span>📑</span> Structured PDF Reporting</h4>
+              <p style="font-size:0.75rem; color:#94a3b8;">Court-ready reports with evidence details and hash certificates.</p>
+            </div>
+            <div class="submodule-card">
+              <h4><span>📉</span> Reduced Manual Workload</h4>
+              <p style="font-size:0.75rem; color:#94a3b8;">Simplifies analysis and forensic documentation.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quadrant D -->
+        <div class="quadrant-card">
+          <div class="quadrant-header">
+            <div class="quadrant-letter-title">
+              <span class="quad-badge badge-d">D</span>
+              <h3>PROJECT IMPACT</h3>
+            </div>
+            <span class="quad-tag">From Evidence to Actionable Intelligence</span>
+          </div>
+          <ul class="checklist-items" style="margin-bottom:1.25rem;">
+            <li><span class="check-icon-green">✔</span> Reduces repetitive manual forensic tasks.</li>
+            <li><span class="check-icon-green">✔</span> Combines multiple forensic analysis activities into one platform.</li>
+            <li><span class="check-icon-green">✔</span> Improves evidence tracking and documentation.</li>
+            <li><span class="check-icon-green">✔</span> Supports consistent and legally admissible investigation reporting.</li>
+            <li><span class="check-icon-green">✔</span> Helps investigators understand complex digital evidence.</li>
+          </ul>
+          <div style="background:#090f1d; border:1px solid #1c2b48; border-radius:8px; padding:0.85rem; text-align:center;">
+            <div style="font-size:0.8rem; font-weight:800; color:#00d2ff; letter-spacing:0.1em; text-transform:uppercase;">
+              ACQUIRE → VERIFY → ANALYZE → CORRELATE → REPORT
+            </div>
+            <div style="font-size:0.7rem; color:#94a3b8; margin-top:0.35rem;">
+              FASTER INVESTIGATIONS • STRONGER EVIDENCE • CLEARER INSIGHTS • COURT-READY REPORTS
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =================================================================
+         SLIDE 5: TECHNOLOGY STACK
+    ================================================================== -->
+    <section id="slide-5" class="slide-section">
+      <div class="slide-header">
+        <div class="slide-header-left">
+          <h1 class="slide-main-title" style="font-size:1.6rem;">ForensiQ — Technology Stack</h1>
+          <p class="slide-description">
+            Digital Forensic Investigation Toolkit with Automated Evidence Acquisition, Multi-Source Analysis & Court-Ready Reporting
+          </p>
+        </div>
+        <div class="slide-tag-pill">
+          ACQUIRE • ANALYZE • CORRELATE • REPORT
+        </div>
+      </div>
+
+      <div class="tech-stack-layout">
+        <!-- 4 Layer Architectural Cards -->
+        <div class="tech-top-row">
+
+          <!-- Layer 1: Frontend -->
+          <div class="tech-layer-card" style="border-top:3px solid #00d2ff;">
+            <div class="layer-heading">
+              <span>Frontend (User Interface)</span>
+              <span class="pill-badge pill-cyan">Client</span>
+            </div>
+            <div class="tech-logo-title-row">
+              <span class="tech-icon-large">📱</span>
+              <div>
+                <h4>Flutter (Dart)</h4>
+              </div>
+            </div>
+            <p class="tech-lead">Cross-platform dashboard for investigators</p>
+            <div style="display:flex; gap:0.4rem; margin-bottom:0.75rem;">
+              <span class="pill-badge">Android App</span>
+              <span class="pill-badge">Windows App</span>
+              <span class="pill-badge">Web (Flutter Web)</span>
+            </div>
+            <ul class="tech-features-list">
+              <li>Case management UI</li>
+              <li>Evidence acquisition controls</li>
+              <li>Analysis reports & visualization</li>
+              <li>PDF report viewer</li>
+              <li>Multi-platform support</li>
+            </ul>
+          </div>
+
+          <!-- Layer 2: Backend -->
+          <div class="tech-layer-card" style="border-top:3px solid #00e676;">
+            <div class="layer-heading">
+              <span>Backend (API & Core Services)</span>
+              <span class="pill-badge pill-green">Engine</span>
+            </div>
+            <div class="tech-logo-title-row">
+              <span class="tech-icon-large">🦀</span>
+              <div>
+                <h4>Rust (Axum)</h4>
+              </div>
+            </div>
+            <p class="tech-lead">High-performance REST API and forensic processing engine</p>
+            <ul class="tech-features-list">
+              <li>REST API Architecture</li>
+              <li>Authentication (JWT)</li>
+              <li>Case Management Engine</li>
+              <li>Evidence Processing Pipelines</li>
+              <li>Artifact Analysis & File Carving</li>
+              <li>Report Generation Service</li>
+            </ul>
+          </div>
+
+          <!-- Layer 3: Database -->
+          <div class="tech-layer-card" style="border-top:3px solid #f59e0b;">
+            <div class="layer-heading">
+              <span>Database Layer</span>
+              <span class="pill-badge" style="background:rgba(245,158,11,0.2); color:#f59e0b;">SQLx</span>
+            </div>
+            <div class="tech-logo-title-row">
+              <span class="tech-icon-large">🐘</span>
+              <div>
+                <h4>PostgreSQL</h4>
+              </div>
+            </div>
+            <p class="tech-lead">Stores case data, evidence metadata, and chain-of-custody logs</p>
+            <ul class="tech-features-list">
+              <li>Case details & investigation data</li>
+              <li>Evidence metadata & hashes</li>
+              <li>Chain-of-custody immutable records</li>
+              <li>User accounts & permissions</li>
+              <li>Analysis results & reports</li>
+            </ul>
+          </div>
+
+          <!-- Layer 4: Storage & Auth -->
+          <div class="tech-layer-card" style="border-top:3px solid #a855f7;">
+            <div class="layer-heading">
+              <span>Authentication & Storage</span>
+              <span class="pill-badge pill-purple">Cloud</span>
+            </div>
+            <div class="tech-logo-title-row">
+              <span class="tech-icon-large">☁️</span>
+              <div>
+                <h4>JWT & Amazon S3</h4>
+              </div>
+            </div>
+            <p class="tech-lead">Secure token authentication & large evidence vault</p>
+            <ul class="tech-features-list">
+              <li>JWT: Secure login & role-based access</li>
+              <li>API authentication headers</li>
+              <li>Amazon S3 (Compatible) Vault</li>
+              <li>Large file handling (disk images, PCAPs)</li>
+              <li>Tamper-evident checksum checks</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Middle: Forensic Processing Modules -->
+        <div class="tech-modules-banner">
+          <h3 style="font-size:1.15rem; font-weight:800; color:#ffffff;">Forensic Processing Modules</h3>
+          <div class="tech-modules-grid">
+            <div class="tech-mod-box">
+              <h4><span>💽</span> Disk Forensics</h4>
+              <ul>
+                <li>The Sleuth Kit (libtsk)</li>
+                <li>Filesystem parsing</li>
+                <li>Deleted file recovery</li>
+                <li>File carving</li>
+              </ul>
+            </div>
+            <div class="tech-mod-box">
+              <h4><span>🧠</span> Memory Forensics</h4>
+              <ul>
+                <li>Volatility Framework</li>
+                <li>Process analysis</li>
+                <li>Network connections</li>
+                <li>Injected artifacts</li>
+              </ul>
+            </div>
+            <div class="tech-mod-box">
+              <h4><span>🌐</span> Network Forensics</h4>
+              <ul>
+                <li>PCAP analysis</li>
+                <li>Protocol parsing</li>
+                <li>Session reconstruction</li>
+                <li>Suspicious traffic detection</li>
+              </ul>
+            </div>
+            <div class="tech-mod-box">
+              <h4><span>⏱️</span> Timeline & Correlation</h4>
+              <ul>
+                <li>Cross-source timeline</li>
+                <li>IOC & keyword search</li>
+                <li>Correlation engine</li>
+                <li>Artifact relationship mapping</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Row: External Tools & Reporting -->
+        <div class="tech-bottom-row">
+          <div class="tech-layer-card">
+            <div class="layer-heading">
+              <span>External Forensic Tools & Libraries</span>
+            </div>
+            <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:0.75rem; margin-top:0.75rem;">
+              <div style="background:#090f1d; padding:0.75rem; border-radius:6px; text-align:center;">
+                <div style="font-weight:700; color:#00d2ff; font-size:0.8rem;">The Sleuth Kit</div>
+                <div style="font-size:0.68rem; color:#94a3b8;">Filesystem & carving</div>
+              </div>
+              <div style="background:#090f1d; padding:0.75rem; border-radius:6px; text-align:center;">
+                <div style="font-weight:700; color:#a855f7; font-size:0.8rem;">Volatility</div>
+                <div style="font-size:0.68rem; color:#94a3b8;">Memory dump analysis</div>
+              </div>
+              <div style="background:#090f1d; padding:0.75rem; border-radius:6px; text-align:center;">
+                <div style="font-weight:700; color:#00e676; font-size:0.8rem;">Wireshark / TShark</div>
+                <div style="font-size:0.68rem; color:#94a3b8;">PCAP parsing</div>
+              </div>
+              <div style="background:#090f1d; padding:0.75rem; border-radius:6px; text-align:center;">
+                <div style="font-weight:700; color:#f59e0b; font-size:0.8rem;">Python Scripts</div>
+                <div style="font-size:0.68rem; color:#94a3b8;">Supporting plugins</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-layer-card">
+            <div class="layer-heading">
+              <span>Reporting & Visualization</span>
+            </div>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem; margin-top:0.75rem;">
+              <div style="background:#090f1d; padding:0.75rem; border-radius:6px;">
+                <div style="font-weight:700; color:#ef4444; font-size:0.85rem; margin-bottom:0.25rem;">📄 PDF Report Generation</div>
+                <ul class="tech-features-list">
+                  <li>Structured, court-ready reports</li>
+                  <li>Evidence summary & chain-of-custody</li>
+                  <li>Timeline, artifacts, IOC results</li>
+                </ul>
+              </div>
+              <div style="background:#090f1d; padding:0.75rem; border-radius:6px;">
+                <div style="font-weight:700; color:#00d2ff; font-size:0.85rem; margin-bottom:0.25rem;">📊 Charts & Visualizations</div>
+                <ul class="tech-features-list">
+                  <li>Timeline view & IOC graphs</li>
+                  <li>Artifact correlations</li>
+                  <li>Case statistics workbench</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =================================================================
+         SLIDE 6: KEY FEATURES & TEAM MEMBERS
+    ================================================================== -->
+    <section id="slide-6" class="slide-section">
+      <div class="slide-header">
+        <div class="slide-header-left">
+          <div class="brand-title" style="font-size:2.2rem;">ForensiQ</div>
+          <h2 class="slide-sub-headline">Digital Forensic Investigation Toolkit</h2>
+          <p class="slide-description">
+            with Automated Evidence Acquisition, Multi-Source Analysis, Artifact Correlation & Court-Ready Reporting
+          </p>
+        </div>
+        <div class="slide-tag-pill">
+          ACQUIRE • ANALYZE • CORRELATE • REPORT
+        </div>
+      </div>
+
+      <div class="features-team-grid">
+        <!-- Key Features 01 to 08 -->
+        <div class="features-col">
+          <h3><span>⚡</span> Key Features</h3>
+          <div class="features-numbered-list">
+            <div class="feat-num-item">
+              <span class="feat-digit-badge">01</span>
+              <div class="feat-num-text">
+                <h4>Automated Evidence Acquisition</h4>
+                <p>Write-blocked collection with SHA-256/SHA-1 verification</p>
+              </div>
+            </div>
+            <div class="feat-num-item">
+              <span class="feat-digit-badge">02</span>
+              <div class="feat-num-text">
+                <h4>Chain-of-Custody Logging</h4>
+                <p>Tamper-evident, auto-generated, auditable logs</p>
+              </div>
+            </div>
+            <div class="feat-num-item">
+              <span class="feat-digit-badge">03</span>
+              <div class="feat-num-text">
+                <h4>Multi-Source Analysis</h4>
+                <p>Disk, memory and network artifact analysis in a unified workflow</p>
+              </div>
+            </div>
+            <div class="feat-num-item">
+              <span class="feat-digit-badge">04</span>
+              <div class="feat-num-text">
+                <h4>Artifact Extraction & File Recovery</h4>
+                <p>Filesystem parsing and file carving (NTFS/EXT/FAT)</p>
+              </div>
+            </div>
+            <div class="feat-num-item">
+              <span class="feat-digit-badge">05</span>
+              <div class="feat-num-text">
+                <h4>Memory & Network Forensics</h4>
+                <p>Process analysis, network connections, PCAP analysis</p>
+              </div>
+            </div>
+            <div class="feat-num-item">
+              <span class="feat-digit-badge">06</span>
+              <div class="feat-num-text">
+                <h4>Timeline Reconstruction</h4>
+                <p>Cross-source correlation of filesystem, registry and logs</p>
+              </div>
+            </div>
+            <div class="feat-num-item">
+              <span class="feat-digit-badge">07</span>
+              <div class="feat-num-text">
+                <h4>IOC & Keyword Correlation</h4>
+                <p>Automatic detection and correlation across all artifacts</p>
+              </div>
+            </div>
+            <div class="feat-num-item">
+              <span class="feat-digit-badge">08</span>
+              <div class="feat-num-text">
+                <h4>Court-Ready Reporting</h4>
+                <p>Structured PDF reports with verified evidence and chain-of-custody</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Designed by Team Members -->
+        <div class="team-col">
+          <h3><span>👥</span> Designed by Team Members</h3>
+          <div class="team-members-list">
+            <div class="team-member-card">
+              <div class="member-name-area">
+                <div class="member-avatar-circle">GS</div>
+                <h4>G. SAI</h4>
+              </div>
+              <div class="member-role-area">
+                <div class="member-role-title">Team Lead & Backend Development</div>
+                <div class="member-role-desc">(Rust, API, Database, Integration)</div>
+              </div>
+            </div>
+
+            <div class="team-member-card">
+              <div class="member-name-area">
+                <div class="member-avatar-circle" style="background:linear-gradient(135deg, #00d2ff, #1f6feb);">KS</div>
+                <h4>K. SHANMUKH RAO</h4>
+              </div>
+              <div class="member-role-area">
+                <div class="member-role-title">Frontend Development</div>
+                <div class="member-role-desc">(Flutter UI, Dashboard)</div>
+              </div>
+            </div>
+
+            <div class="team-member-card">
+              <div class="member-name-area">
+                <div class="member-avatar-circle" style="background:linear-gradient(135deg, #00e676, #059669);">KC</div>
+                <h4>K. CHARAN TEJA</h4>
+              </div>
+              <div class="member-role-area">
+                <div class="member-role-title">Forensic Modules</div>
+                <div class="member-role-desc">(Disk, Memory & Network Analysis)</div>
+              </div>
+            </div>
+
+            <div class="team-member-card">
+              <div class="member-name-area">
+                <div class="member-avatar-circle" style="background:linear-gradient(135deg, #f59e0b, #d97706);">GS</div>
+                <h4>G. SHARAN KUMAR</h4>
+              </div>
+              <div class="member-role-area">
+                <div class="member-role-title">Security & Authentication</div>
+                <div class="member-role-desc">(JWT, Hashing, Chain-of-Custody)</div>
+              </div>
+            </div>
+
+            <div class="team-member-card">
+              <div class="member-name-area">
+                <div class="member-avatar-circle" style="background:linear-gradient(135deg, #ec4899, #be185d);">JD</div>
+                <h4>J. DINESH</h4>
+              </div>
+              <div class="member-role-area">
+                <div class="member-role-title">Report Generation & Testing</div>
+                <div class="member-role-desc">(PDF Reports, Documentation, QA)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Thank You Banner -->
+      <div class="thank-you-banner">
+        <div class="thank-you-title">Thank You</div>
+        <div class="thank-you-sub">FOR YOUR TIME AND SUPPORT</div>
+      </div>
+    </section>
+
+
+    <!-- =================================================================
+         SLIDE LIVE: INTERACTIVE WORKBENCH
+    ================================================================== -->
+    <section id="slide-live" class="slide-section">
+      <div class="slide-header">
+        <div class="slide-header-left">
+          <h1 class="slide-main-title" style="font-size:1.6rem;">ForensiQ Live Investigator Console</h1>
+          <p class="slide-description">
+            Fully functional forensic workbench connected to the Rust backend with write-blocked evidence hashing, binary carving, and court-ready PDF generation.
+          </p>
+        </div>
+        <div class="slide-tag-pill" style="border-color:#00e676; color:#00e676;">
+          LIVE WORKBENCH ACTIVE
+        </div>
+      </div>
+
+      <div class="live-console-grid">
+        <!-- Sidebar Navigation for Workbench -->
+        <div class="console-sidebar">
+          <button class="console-nav-btn active-console-nav" onclick="showConsoleTab('tab-stats')">
+            <span>📊</span>
+            <span>Dashboard Overview</span>
+          </button>
+          <button class="console-nav-btn" onclick="showConsoleTab('tab-device')">
+            <span>📱</span>
+            <span>Device Overview</span>
+          </button>
+          <button class="console-nav-btn" onclick="showConsoleTab('tab-security')">
+            <span>🛡️</span>
+            <span>Security Posture</span>
+          </button>
+          <button class="console-nav-btn" onclick="showConsoleTab('tab-acquire')">
+            <span>🔒</span>
+            <span>Evidence Acquisition</span>
+          </button>
+          <button class="console-nav-btn" onclick="showConsoleTab('tab-carve')">
+            <span>💽</span>
+            <span>Binary File Carving</span>
+          </button>
+          <button class="console-nav-btn" onclick="showConsoleTab('tab-ioc')">
+            <span>🚨</span>
+            <span>IOC Watchlist Scan</span>
+          </button>
+          <button class="console-nav-btn" onclick="showConsoleTab('tab-report')">
+            <span>📑</span>
+            <span>Court-Ready Report</span>
+          </button>
+        </div>
+
+        <!-- Workbench Panels -->
+        <div class="console-panel">
+
+          <!-- TAB: Dashboard Stats -->
+          <div id="tab-stats" class="console-tab-content active-panel">
+            <h3 class="panel-header-title">Forensic Case Analytics & Custody Vault</h3>
+            <p class="panel-header-desc">Live metrics from the persistence database and active investigation items.</p>
+            
+            <div class="stats-4grid">
+              <div class="stat-metric-card">
+                <div class="stat-metric-title">Active Cases</div>
+                <div class="stat-metric-val" id="metric-cases">4</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-title">Evidence Vault Items</div>
+                <div class="stat-metric-val" id="metric-evidence" style="color:#00d2ff;">12</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-title">Reports Generated</div>
+                <div class="stat-metric-val" id="metric-reports" style="color:#00e676;">7</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-title">Carved Files</div>
+                <div class="stat-metric-val" id="metric-carved" style="color:#a855f7;">43</div>
+              </div>
+            </div>
+
+            <h4 style="font-size:1rem; font-weight:700; color:#ffffff; margin-bottom:0.6rem;">Active Cases Ledger</h4>
+            <div class="data-table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Case ID</th>
+                    <th>Title</th>
+                    <th>Lead Investigator</th>
+                    <th>Status</th>
+                    <th>Evidence Items</th>
+                  </tr>
+                </thead>
+                <tbody id="cases-table-body">
+                  <tr>
+                    <td><span class="hash-code">CASE-2024-001</span></td>
+                    <td>Financial Fraud Intrusion Analysis</td>
+                    <td>Lead Investigator J. Dinesh</td>
+                    <td><span class="pill-badge pill-green">ACTIVE</span></td>
+                    <td>4 Items (Disk, RAM, PCAP)</td>
+                  </tr>
+                  <tr>
+                    <td><span class="hash-code">CASE-2024-002</span></td>
+                    <td>Unauthorized Mobile Exfiltration</td>
+                    <td>Lead Investigator K. Shanmukh Rao</td>
+                    <td><span class="pill-badge pill-cyan">UNDER REVIEW</span></td>
+                    <td>2 Items (Android Image)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB: Device Overview -->
+          <div id="tab-device" class="console-tab-content">
+            <h3 class="panel-header-title">Connected Android Device Inspector</h3>
+            <p class="panel-header-desc">Hardware signature, boot security, and operating system properties.</p>
+            <div class="device-overview-card" style="padding:1.25rem;">
+              <div class="device-title-row" style="margin-bottom:1rem;">
+                <span class="device-phone-icon" style="font-size:2.8rem;">📱</span>
+                <div>
+                  <div class="device-name-text" style="font-size:1.3rem;">Infinix X6815D</div>
+                  <div class="device-version-text" style="font-size:0.85rem;">Android 13 • SDK 33 • Build NR4D-202405</div>
+                </div>
+              </div>
+              <div class="device-badges-grid" style="gap:0.75rem; font-size:0.85rem;">
+                <div class="device-badge-row">
+                  <span>Security Patch Level:</span>
+                  <span style="color:#00d2ff; font-weight:700;">2024-05-05</span>
+                </div>
+                <div class="device-badge-row">
+                  <span>Verified Boot State:</span>
+                  <span class="device-badge-green">green (Signed)</span>
+                </div>
+                <div class="device-badge-row">
+                  <span>SELinux Enforcing:</span>
+                  <span style="color:#00e676; font-weight:700;">Enforcing</span>
+                </div>
+                <div class="device-badge-row">
+                  <span>Bootloader Status:</span>
+                  <span style="color:#f59e0b; font-weight:700;">Locked</span>
+                </div>
+                <div class="device-badge-row">
+                  <span>VBMeta Trust:</span>
+                  <span style="color:#00e676; font-weight:700;">locked / valid</span>
+                </div>
+                <div class="device-badge-row">
+                  <span>Build Fingerprint:</span>
+                  <span class="hash-code">Infinix/X6815D/X6815D:13/TP1A</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: Security Posture -->
+          <div id="tab-security" class="console-tab-content">
+            <h3 class="panel-header-title">Device Security Posture & Integrity Checklist</h3>
+            <p class="panel-header-desc">Cryptographic and kernel posture validation as verified on the device.</p>
+            <div class="security-checklist" style="font-size:0.95rem; gap:0.6rem;">
+              <div class="sec-check-row" style="padding:0.6rem 0.85rem; background:var(--bg-secondary); border-radius:6px;">
+                <span>✔ Verified Boot Status</span>
+                <span style="color:#00e676;">green (OEM Key Valid)</span>
+              </div>
+              <div class="sec-check-row" style="padding:0.6rem 0.85rem; background:var(--bg-secondary); border-radius:6px;">
+                <span>✔ Bootloader Lock</span>
+                <span style="color:#00e676;">Locked</span>
+              </div>
+              <div class="sec-check-row" style="padding:0.6rem 0.85rem; background:var(--bg-secondary); border-radius:6px;">
+                <span>✔ VBMeta Digest</span>
+                <span style="color:#00e676;">locked</span>
+              </div>
+              <div class="sec-check-row" style="padding:0.6rem 0.85rem; background:var(--bg-secondary); border-radius:6px;">
+                <span>✔ SELinux Mode</span>
+                <span style="color:#00e676;">Enforcing</span>
+              </div>
+              <div class="sec-check-row" style="padding:0.6rem 0.85rem; background:var(--bg-secondary); border-radius:6px;">
+                <span>✔ Production Build Type</span>
+                <span style="color:#00e676;">user/release-keys</span>
+              </div>
+              <div class="sec-check-row" style="padding:0.6rem 0.85rem; background:var(--bg-secondary); border-radius:6px;">
+                <span>✔ ADB Authentication</span>
+                <span style="color:#f59e0b;">Required (RSA Handshake)</span>
+              </div>
+              <div class="sec-check-row" style="padding:0.6rem 0.85rem; background:var(--bg-secondary); border-radius:6px;">
+                <span>✔ Storage Encryption</span>
+                <span style="color:#00e676;">encrypted (File-Based Encryption)</span>
+              </div>
+              <div class="sec-check-row" style="padding:0.6rem 0.85rem; background:var(--bg-secondary); border-radius:6px;">
+                <span>✔ Root Indicators (Magisk/KernelSU)</span>
+                <span style="color:#00e676;">None found</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: Evidence Acquisition -->
+          <div id="tab-acquire" class="console-tab-content">
+            <h3 class="panel-header-title">Write-Blocked Evidence Acquisition & Hash Verifier</h3>
+            <p class="panel-header-desc">Cryptographically intake evidence with immediate SHA-256 and SHA-1 calculation.</p>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.25rem;">
+              <div>
+                <div class="form-group">
+                  <label class="form-label">Case Identifier</label>
+                  <input type="text" id="acq-case-id" class="form-input" value="CASE-2024-001">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Evidence File Path (Image/Dump)</label>
+                  <input type="text" id="acq-file-path" class="form-input" value="./ForensiQ_Project_Abstract.pdf">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Evidence Filename</label>
+                  <input type="text" id="acq-file-name" class="form-input" value="evidence_disk_sample.raw">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Lead Custodian</label>
+                  <input type="text" id="acq-custodian" class="form-input" value="Investigator J. Dinesh">
+                </div>
+                <button class="btn-primary" onclick="runEvidenceAcquisition()">
+                  <span>Acquire & Verify Hash</span>
+                  <span>🔒</span>
+                </button>
+              </div>
+
+              <div style="background:var(--bg-secondary); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:1.25rem;">
+                <h4 style="font-size:0.95rem; font-weight:700; color:#ffffff; margin-bottom:0.75rem;">Cryptographic Certificate</h4>
+                <div style="margin-bottom:0.75rem;">
+                  <div style="font-size:0.72rem; color:var(--text-muted);">SHA-256 Digest:</div>
+                  <div class="hash-code" id="res-sha256" style="word-break:break-all; display:block; margin-top:0.25rem;">
+                    e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+                  </div>
+                </div>
+                <div style="margin-bottom:0.75rem;">
+                  <div style="font-size:0.72rem; color:var(--text-muted);">SHA-1 Digest:</div>
+                  <div class="hash-code" id="res-sha1" style="word-break:break-all; display:block; margin-top:0.25rem;">
+                    da39a3ee5e6b4b0d3255bfef95601890afd80709
+                  </div>
+                </div>
+                <div style="font-size:0.78rem; color:#00e676; display:flex; align-items:center; gap:0.4rem;">
+                  <span>✔</span>
+                  <span>Tamper-evident verification stamp recorded in chain of custody.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: File Carving -->
+          <div id="tab-carve" class="console-tab-content">
+            <h3 class="panel-header-title">Multi-Source Binary File Carving Engine</h3>
+            <p class="panel-header-desc">Deep byte scanning for headers and footers across PDF, PNG, and JPEG formats.</p>
+            <div class="form-group">
+              <label class="form-label">Select File Signatures to Carve</label>
+              <div style="display:flex; gap:1rem; margin-top:0.4rem;">
+                <label style="color:#ffffff; font-size:0.85rem;"><input type="checkbox" id="carve-pdf" checked> PDF Documents (%PDF)</label>
+                <label style="color:#ffffff; font-size:0.85rem;"><input type="checkbox" id="carve-png" checked> PNG Images (\x89PNG)</label>
+                <label style="color:#ffffff; font-size:0.85rem;"><input type="checkbox" id="carve-jpeg" checked> JPEG Images (\xFF\xD8\xFF)</label>
+              </div>
+            </div>
+            <button class="btn-primary btn-success" onclick="runCarvingEngine()">
+              <span>Execute Real File Carving</span>
+              <span>💽</span>
+            </button>
+            <div id="carve-results-area" style="margin-top:1.25rem;"></div>
+          </div>
+
+          <!-- TAB: IOC Scan -->
+          <div id="tab-ioc" class="console-tab-content">
+            <h3 class="panel-header-title">Automated Threat & IOC Correlation Engine</h3>
+            <p class="panel-header-desc">Cross-reference artifacts against malicious IP watchlists, URLs, and malicious hashes.</p>
+            <div class="form-group">
+              <label class="form-label">Custom Threat Keywords & Hashes (comma separated)</label>
+              <input type="text" id="ioc-keywords" class="form-input" value="malware_agent.exe, fraud-gateway.top, cobalt_beacon">
+            </div>
+            <button class="btn-primary" style="background:linear-gradient(135deg, #ef4444, #f97316);" onclick="runIocScan()">
+              <span>Scan IOC Threat Watchlist</span>
+              <span>🚨</span>
+            </button>
+            <div id="ioc-results-area" style="margin-top:1.25rem;"></div>
+          </div>
+
+          <!-- TAB: Court-Ready Report -->
+          <div id="tab-report" class="console-tab-content">
+            <h3 class="panel-header-title">Court-Ready Forensic PDF Report Workbench</h3>
+            <p class="panel-header-desc">Generate an evidentiary PDF with verified SHA-256 stamps and custody audit records.</p>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.25rem;">
+              <div>
+                <div class="form-group">
+                  <label class="form-label">Investigator Name</label>
+                  <input type="text" id="rep-name" class="form-input" value="Lead Investigator J. Dinesh">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Investigator Badge ID</label>
+                  <input type="text" id="rep-badge" class="form-input" value="24634-CM-031">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Institution / Department</label>
+                  <input type="text" id="rep-dept" class="form-input" value="Department of Digital Forensics & Cyber Defense">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Include Sections:</label>
+                  <div style="display:flex; flex-direction:column; gap:0.4rem; font-size:0.85rem; color:#cbd5e1;">
+                    <label><input type="checkbox" checked> Chain of Custody Audit Trail</label>
+                    <label><input type="checkbox" checked> Device Overview & Security Posture</label>
+                    <label><input type="checkbox" checked> Recovered File Carving Signatures</label>
+                    <label><input type="checkbox" checked> Timeline & Threat Correlated IOCs</label>
+                  </div>
+                </div>
+                <button class="btn-primary btn-purple" onclick="generateCourtReport()">
+                  <span>Generate Court-Ready PDF Report</span>
+                  <span>📑</span>
+                </button>
+              </div>
+
+              <div id="report-download-card" style="background:var(--bg-secondary); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:1.25rem; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                <div style="font-size:3rem; margin-bottom:0.5rem;">📄</div>
+                <h4 style="font-size:1.1rem; color:#ffffff; font-weight:800; margin-bottom:0.25rem;">ForensiQ Forensic Report</h4>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem;">Tamper-Evident SHA-256 Immutability Certificate Included</p>
+                <div id="report-status-badge" class="pill-badge pill-green" style="margin-bottom:1rem;">Ready to Compile</div>
+                <button class="btn-primary" id="btn-download-pdf" style="display:none;" onclick="downloadCompiledPdf()">
+                  <span>Download Court-Ready PDF</span>
+                  <span>⬇</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Notification Toast -->
+  <div id="toast-msg" style="position:fixed; bottom:24px; right:24px; background:#161b22; border:1px solid #30363d; border-radius:8px; padding:12px 20px; color:#ffffff; font-size:0.85rem; box-shadow:0 8px 24px rgba(0,0,0,0.5); display:none; z-index:9999;"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

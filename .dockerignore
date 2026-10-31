@@ -1,0 +1,8 @@
+target/
+backend/target/
+frontend/
+.git/
+.idea/
+.vscode/
+carved_output/
+*.sqlite*

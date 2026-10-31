@@ -11,8 +11,10 @@ evidence_intake/
 *.sqlite
 *.sqlite-shm
 *.sqlite-wal
+*.db
 backend/*.sqlite
 backend/*.sqlite*
+backend/*.db
 backend/*.raw
 
 # Flutter / Dart
